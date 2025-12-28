@@ -59,28 +59,28 @@ export default function MusicPlayer({ playing, onPlayChange }: MusicPlayerProps)
       />
 
       {/* Music Player Widget */}
-      <div className="fixed bottom-8 right-8 z-50">
-        <div className="bg-white rounded-full shadow-romantic p-4 flex items-center gap-4 border border-rose-gold/20">
-          {/* Music Icon */}
-          <div className="text-rose-gold">
+      <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50">
+        <div className="bg-white rounded-full shadow-romantic p-3 md:p-4 flex items-center gap-2 md:gap-4 border border-rose-gold/20 flex-wrap md:flex-nowrap justify-center md:justify-start">
+          {/* Music Icon - Hidden on mobile */}
+          <div className="text-rose-gold hidden md:block">
             <Music className="w-5 h-5" />
           </div>
 
           {/* Play/Pause Button */}
           <button
             onClick={togglePlay}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-gold/10 hover:bg-rose-gold/20 text-rose-gold transition-colors duration-200"
+            className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full bg-rose-gold/10 hover:bg-rose-gold/20 text-rose-gold transition-colors duration-200 flex-shrink-0"
             aria-label={playing ? "Pause music" : "Play music"}
           >
             {playing ? (
-              <Pause className="w-5 h-5" />
+              <Pause className="w-4 h-4 md:w-5 md:h-5" />
             ) : (
-              <Play className="w-5 h-5 ml-0.5" />
+              <Play className="w-4 h-4 md:w-5 md:h-5 ml-0.5" />
             )}
           </button>
 
-          {/* Volume Control */}
-          <div className="flex items-center gap-2">
+          {/* Volume Control - Hidden on mobile */}
+          <div className="hidden md:flex items-center gap-2">
             <Volume2 className="w-4 h-4 text-muted-foreground" />
             <input
               type="range"
@@ -94,15 +94,15 @@ export default function MusicPlayer({ playing, onPlayChange }: MusicPlayerProps)
             />
           </div>
 
-          {/* Status Text */}
-          <span className="text-xs text-muted-foreground whitespace-nowrap">
+          {/* Status Text - Hidden on mobile */}
+          <span className="text-xs text-muted-foreground whitespace-nowrap hidden md:inline">
             {playing ? 'Playing' : 'Paused'}
           </span>
         </div>
 
         {/* Decorative Floating Note */}
         {playing && (
-          <div className="absolute -top-8 -right-4 text-rose-gold animate-float-particle">
+          <div className="absolute -top-6 -right-2 md:-top-8 md:-right-4 text-rose-gold animate-float-particle text-lg md:text-2xl">
             ♪
           </div>
         )}
